@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Sabuk Inten — tema light bergaya WhatsApp
+   Palet: hijau zamrud #00624f (header/aksen), krem #efe9df (wallpaper),
+          hijau gelembung #dcf8c6, putih, emas tipis #c9a24a (garis aksen)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --si-emerald: #00624f;
+  --si-emerald-dark: #004d3e;
+  --si-wallpaper: #efe9df;
+  --si-bubble-me: #dcf8c6;
+  --si-bubble-ai: #ffffff;
+  --si-gold: #c9a24a;
+}
+
+html, body, #root {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+/* ---------- Wallpaper chat (pola titik halus ala WA) ---------- */
+body,
+#root,
+main {
+  background-color: var(--si-wallpaper) !important;
+  background-image:
+    radial-gradient(rgba(0, 98, 79, 0.07) 1.2px, transparent 1.2px),
+    radial-gradient(rgba(201, 162, 74, 0.10) 1.2px, transparent 1.2px) !important;
+  background-size: 28px 28px, 28px 28px !important;
+  background-position: 0 0, 14px 14px !important;
+}
+
+/* ---------- Header: bar zamrud dengan garis emas ---------- */
+header,
+#header {
+  background: linear-gradient(180deg, var(--si-emerald) 0%, var(--si-emerald-dark) 100%) !important;
+  color: #fff !important;
+  border-bottom: 2px solid var(--si-gold) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+header *,
+#header * { color: #fff !important; }
+header button:hover,
+#header button:hover { background: rgba(255, 255, 255, 0.14) !important; }
+
+/* Nama aplikasi di header */
+header img[alt*="logo" i],
+#header img[alt*="logo" i] { display: none !important; }
+
+/* ---------- Area pesan ---------- */
+[data-step-type="user_message"],
+[data-step-type="assistant_message"] {
+  max-width: 100%;
+}
+
+/* Gelembung pengguna: kanan, hijau muda */
+[data-step-type="user_message"] .message-content,
+[data-step-type="user_message"] > div > div > div:last-child {
+  background: var(--si-bubble-me) !important;
+  color: #111b21 !important;
+  border-radius: 14px 14px 4px 14px !important;
+  padding: 8px 14px !important;
+  margin-left: auto;
+  max-width: min(78%, 620px);
+  box-shadow: 0 1px 1.5px rgba(11, 20, 26, 0.18);
+  position: relative;
+}
+
+/* Gelembung AI: kiri, putih */
+[data-step-type="assistant_message"] .message-content,
+[data-step-type="assistant_message"] > div > div > div:last-child {
+  background: var(--si-bubble-ai) !important;
+  color: #111b21 !important;
+  border-radius: 14px 14px 14px 4px !important;
+  padding: 8px 14px !important;
+  max-width: min(82%, 680px);
+  box-shadow: 0 1px 1.5px rgba(11, 20, 26, 0.18);
+  border-left: 3px solid var(--si-gold);
+}
+
+/* Teks & kode di dalam gelembung */
+.message-content p { margin: 0 !important; line-height: 1.55; font-size: 0.95rem; }
+.message-content p + p { margin-top: 0.5rem !important; }
+.message-content pre {
+  border-radius: 10px !important;
+  font-size: 0.82rem;
+}
+.message-content code:not(pre code) {
+  background: rgba(0, 98, 79, 0.08);
+  color: var(--si-emerald-dark);
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+/* Sembunyikan avatar/nama bawaan agar bersih seperti WA */
+[data-step-type="user_message"] .author,
+[data-step-type="user_message"] [class*="avatar" i] { display: none !important; }
+
+/* ---------- Kotak input: pil putih melayang ---------- */
+#chat-input,
+.chat-input,
+form:has(#chat-input) > div,
+div:has(> #chat-input) {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 26px !important;
+  box-shadow: 0 2px 8px rgba(11, 20, 26, 0.14) !important;
+}
+#chat-input { padding: 10px 16px !important; font-size: 0.95rem; }
+#chat-input:focus { outline: none !important; box-shadow: none !important; }
+#chat-input::placeholder { color: #667781; }
+
+/* Tombol kirim: bulat hijau */
+#chat-submit {
+  background: var(--si-emerald) !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  width: 40px; height: 40px;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+#chat-submit:hover { background: var(--si-emerald-dark) !important; transform: scale(1.06); }
+
+/* ---------- Detail kecil ---------- */
+a { color: var(--si-emerald) !important; }
+::selection { background: rgba(0, 98, 79, 0.2); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.18); border-radius: 8px; }
+
+/* Sembunyikan watermark "Built with Chainlit" */
+a[href*="chainlit.io"],
+.watermark { display: none !important; }
+
+@media (max-width: 640px) {
+  [data-step-type="user_message"] .message-content,
+  [data-step-type="assistant_message"] .message-content {
+    max-width: 88%;
+  }
+}

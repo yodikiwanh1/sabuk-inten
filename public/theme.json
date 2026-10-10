@@ -1,0 +1,26 @@
+{
+  "variables": {
+    "light": {
+      "--font-sans": "'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif",
+      "--background": "34 28% 92%",
+      "--foreground": "200 25% 12%",
+      "--card": "0 0% 100%",
+      "--card-foreground": "200 25% 12%",
+      "--primary": "166 100% 21%",
+      "--primary-foreground": "0 0% 100%",
+      "--secondary": "34 20% 95%",
+      "--accent": "104 70% 90%",
+      "--accent-foreground": "200 25% 12%",
+      "--muted": "34 20% 94%",
+      "--muted-foreground": "200 10% 40%",
+      "--border": "34 18% 85%",
+      "--input": "34 18% 85%",
+      "--ring": "166 100% 21%",
+      "--radius": "0.75rem"
+    },
+    "dark": {
+      "--background": "200 25% 8%",
+      "--primary": "166 80% 40%"
+    }
+  }
+}
